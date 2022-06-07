@@ -1,5 +1,9 @@
 <template>
   <div>
+    <router-link class="btn btn-dark mx-3"
+    to="/Admin"
+    >Volver al Admin</router-link>
+    <h1 class="text-center text-dark mb-5">Ingrese una nueva Zapatilla</h1>
     <form class="text-center">
       <div class="form-group row text-center">
         <label  class="col-sm-2 col-form-label">Marca</label>
@@ -99,6 +103,11 @@ export default {
       }
       await axios.post(`${apiCall}/api/producto`, newZapa)
       .then(response => {
+        response.data
+      })
+      .catch(err => console.log(err));
+
+      if(newZapa !=null){
           this.marca = '',
           this.modelo = '',
           this.peso = '',
@@ -107,8 +116,7 @@ export default {
           this.img = '',
           this.stock = '',
           this.$toastr.success('Producto Ingresado!');
-      })
-      .catch(err => console.log(err));
+      }
     }
   }
 

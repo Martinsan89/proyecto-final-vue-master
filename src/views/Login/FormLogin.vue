@@ -1,97 +1,96 @@
 <template>
  <div class="UserLogin">
-      <section class="Form my-4 mx-5">
-          <div class="container">
-              <div class="row no-gutters">
-                  <div class="col-lg-5">
-                      <img src="@/assets/logoRun.jpeg" class="img-fluid" alt="Logo login">
-                  </div>
-                  <div class="col-lg-7 px-5 pt-5">
-                      <h1 class="font-weight-bold py-3">Lo Run</h1>
-                      <h4>Inicia tu cuenta LoRun</h4>
-                       <form
-        @submit.prevent="nuevoUsuario">
-          <div class="from-row">
-                <div class="col-lg-7 mt-3">
-                    <h4 class="text-center">Nombre y Apellido</h4>
-                    <div class="form-group text-center">
-                        <input type="text"
-                        class="form-control text-center"
-                        placeholder="Ingrese su nombre"
-                        name="Nombre"
-                        v-model="form.nombre"
-                        @keyup="validarNombre">
-                        <span v-if="error.nombre" class="alert-danger">{{error.nombre}}</span>
-                    </div>
+    <section class="Form my-4 mx-5">
+      <div class="container">
+        <div class="row no-gutters text-dark">
+          <div class="col-lg-5">
+            <img src="@/assets/logoRun.jpeg" class="img-fluid" alt="Logo login">
+          </div>
+          <div class="col-lg-7 px-5 pt-5">
+            <h1 class="font-weight-bold py-3">Lo Run</h1>
+            <h4>Inicia tu cuenta LoRun</h4>
+            <form @submit.prevent="nuevoUsuario">
+            <div class="from-row">
+              <div class="col-lg-7 mt-3">
+                <h4 class="text-center">Nombre y Apellido</h4>
+                <div class="form-group text-center">
+                  <input type="text"
+                  class="form-control text-center"
+                  placeholder="Ingrese su nombre"
+                  name="Nombre"
+                  v-model="form.nombre"
+                  @keyup="validarNombre">
+                  <span v-if="error.nombre" class="alert-danger">{{error.nombre}}</span>
                 </div>
-          </div>
-          <div class="from-row">
-                <div class="col-lg-7">
-                    <div class="form-group">
-                    <h4 class="text-center mt-3">Email</h4>
-                    <input type="email"
-                    class="form-control text-center"
-                    id="inputEmail4"
-                    placeholder="Email"
-                    name="Email"
-                    v-model="form.email"
-                    @keyup="validarEmail">
-                    <span v-if="error.email" class="alert-danger">{{error.email}}</span>
-                    </div>
-                    <div class="form-group ">
-                    <h4 class="text-center mt-3">Contrasenia LoRun</h4>
-                    <input type="password"
-                    class="form-control text-center"
-                    id="Pass"
-                    placeholder="Crea tu contrasenia LoRun"
-                    name="inputPass"
-                    v-model="form.pass"
-                    @keyup="validarPass">
-                    <span v-if="error.pass" class="alert-danger">{{error.pass}}</span>
-                    </div>
-                    <br>
-                </div>
-          </div>
-          <div class="from-row">
-                <div class="col-lg-7">
-                  <h4 class="text-center mt-3">Seleccione su edad</h4>
-                  <div class="row checkbox-row" @mouseover="validarEdad">
-                      <div class="col-xl ">
-                          <div class="checkbox-inline">
-                          <label class="checkbox-inline">
-                          <input type="checkbox"
-                          id="adulto"
-                          value="adulto"
-                          v-model="form.edad"
-                          @mouseout="validarEdad"> +35</label>
-                          </div>
-                      </div>
-                      <div class="row checkbox-row">
-                          <div class="col-xl">
-                          <div class="checkbox-inline">
-                              <label class="checkbox-inline">
-                              <input type="checkbox"
-                              id="joven"
-                              value="joven"
-                              v-model="form.edad"
-                              @mouseout="validarEdad"> -35</label>
-                          </div>
-                            <span v-if="error.edad" class="alert-danger">{{error.edad}}</span>
-                          </div>
-                      </div>
-                  </div>
-                </div>
-          </div>
-          <div class="from-row">
-            <div class="col-lg-7">
-                <button type="submit" class="btn btn-primary mt-3" @click="validarForm">INGRESAR</button>
-            </div>
-          </div>
-        </form>
-                  </div>
               </div>
+            </div>
+            <div class="from-row">
+              <div class="col-lg-7">
+                <div class="form-group">
+                  <h4 class="text-center mt-3">Email</h4>
+                  <input type="email"
+                  class="form-control text-center"
+                  id="inputEmail4"
+                  placeholder="Email"
+                  name="Email"
+                  v-model="form.email"
+                  @keyup="validarEmail">
+                  <span v-if="error.email" class="alert-danger">{{error.email}}</span>
+                </div>
+                <div class="form-group ">
+                  <h4 class="text-center mt-3">Contrasenia LoRun</h4>
+                  <input type="password"
+                  class="form-control text-center"
+                  id="Pass"
+                  placeholder="Crea tu contrasenia LoRun"
+                  name="inputPass"
+                  v-model="form.pass"
+                  @keyup="validarPass">
+                  <span v-if="error.pass" class="alert-danger">{{error.pass}}</span>
+                </div>
+                <br>
+              </div>
+            </div>
+            <div class="from-row">
+              <div class="col-lg-7">
+                <h4 class="text-center mt-3">Seleccione su edad</h4>
+                <div class="row checkbox-row" @mouseover="validarEdad">
+                  <div class="col-xl ">
+                    <div class="checkbox-inline">
+                      <label class="checkbox-inline">
+                      <input type="checkbox"
+                      id="adulto"
+                      value="adulto"
+                      v-model="form.edad"
+                      @mouseout="validarEdad"> +35</label>
+                    </div>
+                  </div>
+                  <div class="row checkbox-row">
+                    <div class="col-xl">
+                      <div class="checkbox-inline">
+                        <label class="checkbox-inline">
+                        <input type="checkbox"
+                        id="joven"
+                        value="joven"
+                        v-model="form.edad"
+                        @mouseout="validarEdad"> -35</label>
+                      </div>
+                      <span v-if="error.edad" class="alert-danger">{{error.edad}}</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="from-row">
+              <div class="col-lg-7">
+                <button type="submit" class="btn btn-primary mt-3" @click="validarForm">INGRESAR</button>
+              </div>
+            </div>
+            </form>
           </div>
-      </section>
+        </div>
+      </div>
+    </section>
   </div>
 </template>
 

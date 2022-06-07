@@ -47,6 +47,12 @@ const routes = [
     props: true,
   },
   {
+    path: "/Zapatilla",
+    name: "Zapatilla",
+    component: () => import("../views/Admin/Zapatilla.vue"),
+    props: true,
+  },
+  {
     path: "/Delete",
     name: "Delete",
     component: () => import("../views/Admin/Delete.vue"),

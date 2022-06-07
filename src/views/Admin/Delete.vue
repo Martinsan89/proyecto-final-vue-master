@@ -17,7 +17,7 @@
           </td>
           <td>
             <router-link to="/Admin"
-            class="btn btn-success">Stock
+            class="btn btn-success">Admin
             </router-link>
           </td>
         </tr>
@@ -45,9 +45,12 @@ export default {
   async Delete(){
     await axios.delete(`${apiCall}/api/producto/${this.$route.params.producto.id}`)
     .then(response => {
-      this.$toastr.success('Registro eliminado!');
+      response.data
     })
     .catch(err => console.log(err));
+    if(this.$route.params.producto.id != null){
+      this.$toastr.success('Registro eliminado!');
+    }
     }
   }
 }

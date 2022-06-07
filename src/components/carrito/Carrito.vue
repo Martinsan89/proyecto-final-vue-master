@@ -63,27 +63,32 @@ export default {
   },
   methods: {
     async Comprar(){
-      const compra = {
+      if(this.user.id != true ){
+        return this.$toastr.warning('Inicia sesion para finalizar la compra')
+      }
+      if(this.productosAlCarrito != false){
+        const compra = {
         marca: this.productosAlCarrito.marca,
         modelo:this.productosAlCarrito.modelo,
         precio: this.productosAlCarrito.precio,
         quantity: this.totalQuantity,
         total: this.totalFinal
-      }
-      await axios.post(`${apiCall}/api/corredor/${this.user.id}/compras`, compra)
-      .then(response => {
-        response.data,
-        localStorage.removeItem('carrito'),
-        this.$emit('vaciar-table', {}),
-        this.$toastr.success('Compra realizada!');
-      })
-      .catch(err => {
-        if(this.compra != true) {
-        this.$toastr.warning('Inicia sesion o agrega un producto al carrito')
-        return
-      }
-      });
+        }
 
+        await axios.post(`${apiCall}/api/corredor/${this.user.id}/compras`, compra)
+        .then(response => {
+        response.data,
+        this.$toastr.success('Compra realizada!');
+        })
+        .catch(err => console.log(err));
+
+        if(compra != null){
+        localStorage.removeItem('carrito'),
+        this.$emit('vaciar-table', {})
+        }
+      } else {
+        return this.$toastr.warning('Agrega un producto al carrito')
+      }
     },
     getUser(){
       this.user = JSON.parse(localStorage.getItem('UsuarioGuardado')) || [];

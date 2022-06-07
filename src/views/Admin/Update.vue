@@ -26,7 +26,7 @@
           </td>
           <td>
             <router-link to="/Admin"
-            class="btn btn-success">Stock
+            class="btn btn-success">Admin
             </router-link>
           </td>
         </tr>
